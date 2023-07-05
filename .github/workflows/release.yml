@@ -18,7 +18,7 @@ jobs:
         run: "echo \"RELEASE_TAG=${GITHUB_REF#refs/tags/}\" >> $GITHUB_ENV"
 
       - name: "Create release"
-        uses: "actions/github-script@v6.3.3"
+        uses: "actions/checkout@v2"
         with:
           github-token: "${{ secrets.GITHUB_TOKEN }}"
           script: |
