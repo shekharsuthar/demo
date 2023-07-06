@@ -26,7 +26,7 @@ jobs:
         env:
           GH_REPO: ${{ github.repository }}
           GH_REPO_O: ${{ github.repository_owner }}
-          GH_T: ${{ secrets.GITHUB_TOKEN }}
+          GH_T: ${{ github.event.inputs.milestone }}
 
 #     steps:
 #       - name: Relese notes format
