@@ -1,6 +1,9 @@
 name: Generete release from milestone
 
 on:
+  push:
+    branches:
+      - "master"
   workflow_dispatch:
     inputs:
       milestone:
