@@ -4,6 +4,9 @@ on: # yamllint disable-line rule:truthy
   push:
     tags:
       - "**"
+    branches:
+      - "mahachange"
+
 
 jobs:
   release:
