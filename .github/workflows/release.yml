@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       milestone:
-        description: "Milestone ID"
+        description: "id only"
         required: true
       version:
         description: "Version to be released"
