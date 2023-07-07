@@ -5,12 +5,7 @@ on:
       - "main"
   workflow_dispatch:
     inputs:
-      milestone:
-        description: "v1.0.0"
-        required: true
-      version:
-        description: "v1.0.0"
-        required: true
+      milestone: 'v1.0.0'
 jobs:
   generate-release:
     name: Generete release from milestone
