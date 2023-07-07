@@ -1,11 +1,8 @@
-name: "Release"
-
-on: # yamllint disable-line rule:truthy
+name: Generete release from milestone
+on:
   push:
     branches:
       - "mahachange"
-
-
 jobs:
   release:
     name: "Release"
