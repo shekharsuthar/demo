@@ -6,10 +6,10 @@ on:
   workflow_dispatch:
     inputs:
       milestone:
-        description: "id only"
+        description: "v1.0.0"
         required: true
       version:
-        description: "Version to be released"
+        description: "v1.0.0"
         required: true
 jobs:
   generate-release:
