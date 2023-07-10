@@ -21,7 +21,7 @@ jobs:
         uses: Beakyn/gha-format-release-notes@v1
         id: format
         env:
-          GITHUB_TOKEN: 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
+          GITHUB_TOKEN: "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"
         with:
           # required
           repository: ${{ github.repository }}
@@ -49,7 +49,7 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: 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
+          GITHUB_TOKEN: "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"
         with:
           tag_name: newsd
           release_name: Fdsd
@@ -60,7 +60,7 @@ jobs:
       - name: Close milestone
         uses: Beakyn/gha-close-milestone@master
         env:
-          GITHUB_TOKEN: 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
+          GITHUB_TOKEN: "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"
         with:
           # required
           repository: ${{ github.repository }}
