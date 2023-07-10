@@ -52,8 +52,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          tag_name: ${{ github.event.inputs.version }}
-          release_name: Release ${{ github.event.inputs.version }}
+          tag_name: new
+          release_name: "saputara"
           body: ${{steps.format.outputs.release-notes}}
           draft: false
           prerelease: false
