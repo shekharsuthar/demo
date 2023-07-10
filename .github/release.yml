@@ -1,5 +1,3 @@
-# .github/release.yml
-
 changelog:
   exclude:
     labels:
@@ -11,10 +9,7 @@ changelog:
       labels:
         - Semver-Major
         - breaking-change
-    - title: Exciting New Features 🎉
-      labels:
-        - Semver-Minor
-        - enhancement
+
     - title: Other Changes
       labels:
         - "*"
