@@ -52,8 +52,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.token }}
         with:
-          tag_name: new
-          release_name: For just testing
+          tag_name: newsd
+          release_name: Fdsd
           body: ${{steps.format.outputs.release-notes}}
           draft: false
           prerelease: false
