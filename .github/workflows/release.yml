@@ -1,40 +1,67 @@
-name: "Release"
-
+name: Generete release from milestone
 on:
   push:
-    branches: 
+    branches:
       - main
-    tags:
-      - "**"
+  workflow_dispatch:
+    inputs:
+      milestone:
+        description: "Milestone ID"
+        required: true
+      version:
+        description: "Version to be released"
+        required: true
 
 jobs:
-  release:
-    name: "Release"
-
-    runs-on: "ubuntu-latest"
-
+  generate-release:
+    name: Generete release from milestone
+    runs-on: ubuntu-latest
     steps:
-      - name: "Determine tag"
-        run: "echo \"RELEASE_TAG=${GITHUB_REF#refs/tags/}\" >> $GITHUB_ENV"
-
-      - name: "Create release"
-        uses: "actions/checkout@v2"
+      - name: Relese notes format
+        uses: Beakyn/gha-format-release-notes@v1
+        id: format
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         with:
-          github-token: "${{ secrets.GITHUB_TOKEN }}"
-          script: |
-            try {
-              const response = await github.rest.repos.createRelease({
-                draft: false,
-                generate_release_notes: true,
-                name: process.env.RELEASE_TAG,
-                owner: context.repo.owner,
-                prerelease: false,
-                repo: context.repo.repo,
-                tag_name: process.env.RELEASE_TAG,
-              });
+          # required
+          repository: ${{ github.repository }}
+          milestone: ${{ github.event.inputs.milestone }}
 
-              core.exportVariable('RELEASE_ID', response.data.id);
-              core.exportVariable('RELEASE_UPLOAD_URL', response.data.upload_url);
-            } catch (error) {
-              core.setFailed(error.message);
-            }
+          # optional
+          custom-row: "${issue.number} <--> ${issue.title}"
+          custom-group-by-label: |
+            [
+              {
+                "title": "### Feature 🎉",
+                "labels": ["feature"]
+              },
+              {
+                "title": "### Bug Fixes 🐛",
+                "labels": ["bug"]
+              },
+              {
+                "title": "### Refactor & Improvements ✨",
+                "labels": ["enhancement", "refactor", "chore"]
+              }
+            ]
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          tag_name: ${{ github.event.inputs.version }}
+          release_name: Release ${{ github.event.inputs.version }}
+          body: ${{steps.format.outputs.release-notes}}
+          draft: false
+          prerelease: false
+
+      - name: Close milestone
+        uses: Beakyn/gha-close-milestone@master
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          # required
+          repository: ${{ github.repository }}
+          milestone: ${{ github.event.inputs.milestone }}
