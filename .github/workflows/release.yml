@@ -1,12 +1,12 @@
 name: Generete release from milestone
-## hay
+
 on:
   push: 
     branches: main
   workflow_dispatch:
     inputs:
       milestone:
-        description: "v1.0"
+        description: "Milestone ID"
         required: true
       version:
         description: "Version to be released"
@@ -21,11 +21,11 @@ jobs:
         uses: Beakyn/gha-format-release-notes@v1
         id: format
         env:
-          GITHUB_TOKEN: "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"
+          GITHUB_TOKEN: ${{ github.token }}
         with:
           # required
           repository: ${{ github.repository }}
-          milestone: 1
+          milestone: ${{ github.event.inputs.milestone }}
 
           # optional
           custom-row: "${issue.number} <--> ${issue.title}"
@@ -49,18 +49,18 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: "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"
+          GITHUB_TOKEN: ${{ github.token }}
         with:
-          tag_name: newsd
-          release_name: Fdsd
-          body: .github/release.yml
+          tag_name: ${{ github.event.inputs.version }}
+          release_name: Release ${{ github.event.inputs.version }}
+          body: ${{steps.format.outputs.release-notes}}
           draft: false
           prerelease: false
 
       - name: Close milestone
         uses: Beakyn/gha-close-milestone@master
         env:
-          GITHUB_TOKEN: "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"
+          GITHUB_TOKEN: ${{ github.token }}
         with:
           # required
           repository: ${{ github.repository }}
