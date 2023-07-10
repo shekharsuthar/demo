@@ -1,7 +1,5 @@
 name: Generete release from milestone
-## new one
 on:
-
   push: 
     branches: main
   workflow_dispatch:
@@ -54,7 +52,7 @@ jobs:
         with:
           tag_name: newsd
           release_name: Fdsd
-          body: ${{steps.format.outputs.release-notes}}
+          body: .github/release.yml
           draft: false
           prerelease: false
 
