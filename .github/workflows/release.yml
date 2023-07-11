@@ -6,7 +6,9 @@ on:
       - main
 
 jobs:
+    
   release:
+    permissions: write-all
     name: Release pushed tag
     runs-on: ubuntu-22.04
     steps:         
