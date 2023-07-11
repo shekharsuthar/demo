@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-    ## demoss
+    ## demossww
   release:
     permissions: write-all
     name: Release pushed tag
