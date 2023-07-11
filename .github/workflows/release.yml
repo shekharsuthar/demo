@@ -2,11 +2,13 @@ name: Create release
 
 on:
   push:
+    tags:
+      - v*
     branches:
       - main
 
 jobs:
-    
+    ## demossww
   release:
     permissions: write-all
     name: Release pushed tag
@@ -17,7 +19,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
         run: |
-              gh release create "$tag" \
-              --repo="$GITHUB_REPOSITORY" \
-              --title="${GITHUB_REPOSITORY#*/} ${tag#v}" \
-              --generate-notes
+              gh release create "$tag" --repo="$GITHUB_REPOSITORY" --title="${GITHUB_REPOSITORY#*/} ${tag#v}" --generate-notes
