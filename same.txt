@@ -1,0 +1,28 @@
+## What's Changed
+
+This pre-release is created to deploy the adapter customization build on CCN PRE-PRD environment. Below are the tickets ID's resolved for common customization build.
+
+## Development Task
+
+**Date** 23/06/2023
+**Ticket ID**[#CCN-I1550] File upload download Issue
+**Description** Added @lazy annotation and Changed code according to keyType in storeFile method
+
+## DevOps Details
+
+**Date** 23/06/2023
+**Environment** PRE-PRD
+**Customized jar to be Deployed** Adapter
+**Customization Jar name** AdapterCustomization.jar
+**Updated By** @YusufTinwala 
+
+
+**Full Changelog**: https://github.com/panamaxinc/CCN-Customization/compare/v5.0.3-MR21-CM15...v5.0.3-MR21-CM16-Common
+
+
+PAT
+
+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
+
+
+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
