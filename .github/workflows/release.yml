@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:         
       - name: Create release
-        run: echo "${{ github.action_path }}"
+        run: echo ${{ github.ref_name }}
 #         env:
 #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #           tag: ${{ github.ref_name }}
