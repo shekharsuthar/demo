@@ -1,3 +1,12 @@
+on:
+  push:
+    branches:
+      - master
+
+name-template: 🔖 $NEXT_PATCH_VERSION
+tag-template: $NEXT_PATCH_VERSION
+template: |
+
 name-template: 'v$RESOLVED_VERSION 🌈'
 tag-template: 'v$RESOLVED_VERSION'
 categories:
