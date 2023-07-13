@@ -33,13 +33,9 @@ template: |
   ## Development Task
   
   **Date** 23/06/2023
-  **Ticket ID**[#CCN-I1550] File upload download Issue
-  **Description** Added @lazy annotation and Changed code according to keyType in storeFile method
+
   
   ## DevOps Details
   
   **Date** 23/06/2023
-  **Environment** PRE-PRD
-  **Customized jar to be Deployed** Adapter
-  **Customization Jar name** AdapterCustomization.jar
-  **Updated By** @YusufTinwala 
+
