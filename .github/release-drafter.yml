@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - master
+      - main
 
 name-template: 🔖 $NEXT_PATCH_VERSION
 tag-template: $NEXT_PATCH_VERSION
@@ -34,7 +34,10 @@ version-resolver:
     labels:
       - 'patch'
   default: patch
-template: |
+on:
+  push:
+    branches:
+      - main
   ## Changes
 
   $CHANGES
