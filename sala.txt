@@ -19,3 +19,4 @@ then
 okk
 new
 bye 
+for all
