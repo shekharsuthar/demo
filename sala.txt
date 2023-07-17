@@ -19,3 +19,4 @@ okk
 new
 bye 
 for all
+server
