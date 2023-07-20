@@ -23,7 +23,7 @@ version-resolver:
             - 'patch'
     default: patch
 template: |
-    ## Release Changes
+    ## What Changed
 
     $CHANGES
     ## Development Task
