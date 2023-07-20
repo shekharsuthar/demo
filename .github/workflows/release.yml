@@ -1,9 +1,11 @@
-name: Create release
+name: Bump version
 
 on:
   pull_request:
     tags:
       - v*
+    types:
+      - closed
     branches:
       - main
 
@@ -13,9 +15,20 @@ jobs:
     name: Release pushed tag
     runs-on: ubuntu-22.04
     steps:
-      - uses: release-drafter/release-drafter@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref_name }}
-      - name: CreateNotes
-        run: gh release create --repo="$GITHUB_REPOSITORY" --generate-notes
+    - uses: actions/checkout@v3
+      with:
+        ref: ${{ github.event.pull_request.merge_commit_sha }}
+        fetch-depth: '0'
+
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@1.64.0 # Don't use @master or @v1 unless you're happy to test the latest version
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # if you don't want to set write permissions use a PAT token
+        WITH_V: true
+        PRERELEASE: true
+    - uses: release-drafter/release-drafter@v5
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        tag: ${{ github.tag }}
+    - name: CreateNotes
+      run: gh release create --repo="$GITHUB_REPOSITORY" --title="${GITHUB_REPOSITORY#*/} ${tag#v}" --generate-notes
