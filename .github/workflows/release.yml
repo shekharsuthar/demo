@@ -18,4 +18,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
       - name: CreateNotes
-        run: gh release create "$tag" --repo="$GITHUB_REPOSITORY" --title="${tag#}" --generate-notes
+        run: gh release create --repo="$GITHUB_REPOSITORY" --generate-notes
