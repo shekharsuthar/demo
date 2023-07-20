@@ -1,6 +1,6 @@
 resource "github_repository" "github-management" {
   name        = "github-management"
-  description = "Terraform based repository to manage all our GutHub repositories"
+  description = "Terraform for based repository to manage all our GutHub repositories"
 
   private            = false
   has_issues         = true
