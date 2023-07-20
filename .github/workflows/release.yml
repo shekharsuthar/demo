@@ -8,7 +8,7 @@ on:
       - main
 
 jobs:
-  release:
+  update_release_draft:
     permissions: write-all
     name: Release pushed tag
     runs-on: ubuntu-22.04
