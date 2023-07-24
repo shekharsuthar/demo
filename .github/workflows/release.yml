@@ -7,6 +7,10 @@ on:
     branches:
       - main
 
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  tag: ${{ github.ref_name }}
+
 jobs:
   update_release_draft:
     permissions: write-all
@@ -14,8 +18,5 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - uses: release-drafter/release-drafter@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref_name }}
       - name: "Generate"
         run: gh release create "$tag" --repo="$GITHUB_REPOSITORY" --title="${GITHUB_REPOSITORY#*/} ${tag#v}" --generate-notes
