@@ -1,22 +1,19 @@
 name: Create release
 
 on:
-  push:
+  pull_request:
     tags:
       - v*
     branches:
       - main
 
-
-
 jobs:
-  update_release_draft:
+  release:
     permissions: write-all
     name: Release pushed tag
     runs-on: ubuntu-22.04
-    steps:
-
-      - name: "Generate"
+    steps:         
+      - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
