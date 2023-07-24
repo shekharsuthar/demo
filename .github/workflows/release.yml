@@ -1,20 +1,30 @@
-name: Create release
+name: Release Drafter
 
 on:
-  pull_request:
-    tags:
-      - v*
+  push:
+
     branches:
       - main
 
+  pull_request:
+
+    types: [opened, reopened, synchronize]
+
+
+permissions:
+  contents: read
+
 jobs:
-  release:
-    permissions: write-all
-    name: Release pushed tag
-    runs-on: ubuntu-22.04
-    steps:         
-      - name: Create release
+  update_release_draft:
+    permissions:
+
+      contents: write
+
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: release-drafter/release-drafter@v5
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref_name }}
-        run: gh release create "$tag" --repo="$GITHUB_REPOSITORY" --title="${GITHUB_REPOSITORY#*/} ${tag#v}" --generate-notes
