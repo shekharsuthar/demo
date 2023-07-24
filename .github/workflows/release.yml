@@ -8,14 +8,14 @@ on:
       - main
 
 jobs:
-  release:
+  update_release_draft:
     permissions: write-all
     name: Release pushed tag
     runs-on: ubuntu-22.04
     steps:
       - uses: release-drafter/release-drafter@v5
-      - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref_name }}
+      - name: "Generate"
         run: gh release create "$tag" --repo="$GITHUB_REPOSITORY" --title="${GITHUB_REPOSITORY#*/} ${tag#v}" --generate-notes
