@@ -8,6 +8,7 @@ on:
       - main
 env:
   sample: "Hekki"
+  run: echo "hay"
 
 jobs:
   tag:
