@@ -25,17 +25,22 @@ jobs:
           git config --local user.name "GitHub Actions"
           git tag ${{ env.TAG }}
           git push origin ${{ env.TAG }}
+        
+          with:
+            name: samsdata
+            path: env.TAG
     outputs:
       output1: ${{ env.TAG }}
 
 
   release:
     permissions: write-all
+    needs: tag
     name: Release pushed tag
     runs-on: ubuntu-22.04
     steps:         
       - name: Create release
-        run:  echo ${{needs.tag.outputs.output1}}
+        run: echo ${{needs.tag.outputs.output1}}
 # #         env:
 # #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 # #           tag: $${{ env.TAG }}
