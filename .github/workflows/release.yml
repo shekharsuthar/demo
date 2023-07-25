@@ -23,7 +23,6 @@ jobs:
       - name: Push tag
         run: |
           git config --local user.email "actions@github.com"
-          sample: ${{ env.TAG }}
           git config --local user.name "GitHub Actions"
           git tag ${{ env.TAG }}
           git push origin ${{ env.TAG }}
