@@ -7,8 +7,12 @@ on:
     branches:
       - main
 
+env:
+  store: "sames"
+
 jobs:
   tag:
+    
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -23,7 +27,7 @@ jobs:
           git tag ${{ env.TAG }}
           git push origin ${{ env.TAG }}
       - name: Show Data
-        run: echo ${{ env.TAG }}
+        run: echo ${{ store }}
 
 #   release:
 #     permissions: write-all
