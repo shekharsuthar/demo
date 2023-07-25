@@ -9,8 +9,6 @@ on:
 
 jobs:
   tag:
-#     env:
-#       sample: "sample"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -24,9 +22,7 @@ jobs:
           git config --local user.name "GitHub Actions"
           git tag ${{ env.TAG }}
           git push origin ${{ env.TAG }}
-          env:
-            sample: ${{ env.TAG }}
-            run: echo ${{ sample }}
+
           
 #   release:
 #     permissions: write-all
@@ -39,3 +35,4 @@ jobs:
 # #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 # #           tag: $${{ env.TAG }}
 # #         run: gh release create "$tag" --repo="$GITHUB_REPOSITORY" --title="${GITHUB_REPOSITORY#*/} ${tag#v}" --generate-notes
+ 
