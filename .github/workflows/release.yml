@@ -16,6 +16,6 @@ jobs:
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.event.repository.updated_at }}
+          tag: "sdf"
           
         run: gh release create "$tag"  --repo="$GITHUB_REPOSITORY" --title="${{ steps.date.outputs.date }}" --generate-notes
