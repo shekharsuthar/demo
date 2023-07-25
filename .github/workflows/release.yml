@@ -25,6 +25,7 @@ jobs:
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
+          sample: ${{ env.TAG }}
           git tag ${{ env.TAG }}
           git push origin ${{ env.TAG }}
           
@@ -34,7 +35,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:         
       - name: Create release
-        run: echo "${{ env.TAG }}"
+        run: echo "${{ sample }}"
 #         env:
 #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #           tag: ${{ env.TAG }}
