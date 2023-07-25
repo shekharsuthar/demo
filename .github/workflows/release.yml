@@ -28,7 +28,7 @@ jobs:
       - name: Show Data
         env:
           sample: ${{ env.TAG }}
-#         run: echo $sample
+          run: echo $sample
 
   release:
     permissions: write-all
