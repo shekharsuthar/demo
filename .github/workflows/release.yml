@@ -6,6 +6,8 @@ on:
       - v*
     branches:
       - main
+env:  
+  sample: 
 
 jobs:
   tag:
@@ -32,7 +34,8 @@ jobs:
     runs-on: ubuntu-22.04
     steps:         
       - name: Create release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ env.TAG }}
-        run: gh release create "$tag" --repo="$GITHUB_REPOSITORY" --title="${GITHUB_REPOSITORY#*/} ${tag#v}" --generate-notes
+        run: echo "{{ env.TAG }}
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#           tag: ${{ env.TAG }}
+#         run: gh release create "$tag" --repo="$GITHUB_REPOSITORY" --title="${GITHUB_REPOSITORY#*/} ${tag#v}" --generate-notes
