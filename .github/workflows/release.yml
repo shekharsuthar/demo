@@ -16,6 +16,9 @@ jobs:
       - name: Create tag
         id: tag
         run: echo "TAG=v1.0.${{ github.run_number }}" >> $GITHUB_ENV
+        env:
+          sample: ${{ env.TAG }}
+          run: echo ${{ sample }}
       - name: Push tag
         run: |
           git config --local user.email "actions@github.com"
