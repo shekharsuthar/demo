@@ -26,6 +26,8 @@ jobs:
           git tag ${{ env.TAG }}
           git push origin ${{ env.TAG }}
       - name: Show Data
+        env:
+          sample: ${{ env.TAG }}
         run: echo $sample
 
 #   release:
