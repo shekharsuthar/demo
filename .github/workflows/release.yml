@@ -25,14 +25,9 @@ jobs:
           git config --local user.name "GitHub Actions"
           git tag ${{ env.TAG }}
           git push origin ${{ env.TAG }}
-      - name: Show Data
-        env:
-          sample: ${{ env.TAG }}
-        run: echo $sample
-      - uses: rmeneely/get-yaml-value@v1
-        with:
-            infile: release.yaml
-            varlist: sample
+    outputs:
+      output1: ${{ env.TAG }}
+
         
 
   release:
@@ -41,7 +36,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:         
       - name: Create release
-        run:  echo $sample
+        run:  echo ${{needs.tags.outputs.output1}}
 # #         env:
 # #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 # #           tag: $${{ env.TAG }}
