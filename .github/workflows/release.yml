@@ -28,7 +28,6 @@ jobs:
     outputs:
       output1: ${{ env.TAG }}
 
-        
 
   release:
     permissions: write-all
@@ -36,7 +35,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:         
       - name: Create release
-        run:  echo ${{needs.tags.outputs.output1}}
+        run:  echo ${{needs.tag.outputs.output1}}
 # #         env:
 # #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 # #           tag: $${{ env.TAG }}
