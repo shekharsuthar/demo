@@ -7,11 +7,12 @@ on:
     branches:
       - main
 
+env:
+  sample: "sd"
 
 jobs:
   tag:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -19,22 +20,25 @@ jobs:
       - name: Create tag
         id: tag
         run: echo "TAG=v1.0.${{ github.run_number }}" >> $GITHUB_ENV
-
       - name: Push tag
         run: |
           git config --local user.email "actions@github.com"
+          sample: ${{ env.TAG }}
           git config --local user.name "GitHub Actions"
           git tag ${{ env.TAG }}
           git push origin ${{ env.TAG }}
+        env:
+          sample: ${{ env.TAG }}
+          run: echo ${{ sample }}
           
-  release:
-    permissions: write-all
-    name: Release pushed tag
-    runs-on: ubuntu-22.04
-    steps:         
-      - name: Create release
-        run: git describe --tags
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#           tag: ${{ env.TAG }}
-#         run: gh release create "$tag" --repo="$GITHUB_REPOSITORY" --title="${GITHUB_REPOSITORY#*/} ${tag#v}" --generate-notes
+#   release:
+#     permissions: write-all
+#     name: Release pushed tag
+#     runs-on: ubuntu-22.04
+#     steps:         
+#       - name: Create release
+#         run: echo 
+# #         env:
+# #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+# #           tag: ${{ env.TAG }}
+# #         run: gh release create "$tag" --repo="$GITHUB_REPOSITORY" --title="${GITHUB_REPOSITORY#*/} ${tag#v}" --generate-notes
