@@ -28,7 +28,8 @@ jobs:
           git push origin ${{ env.TAG }}
         env:
           sample: ${{ env.TAG }}
-
+      - name: Show data
+        run: echo ${{ sample }}
           
 #   release:
 #     permissions: write-all
@@ -39,5 +40,5 @@ jobs:
 #         run: echo 
 # #         env:
 # #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-# #           tag: ${{ env.TAG }}
+# #           tag: $${{ env.TAG }}
 # #         run: gh release create "$tag" --repo="$GITHUB_REPOSITORY" --title="${GITHUB_REPOSITORY#*/} ${tag#v}" --generate-notes
