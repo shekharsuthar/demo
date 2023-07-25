@@ -29,6 +29,11 @@ jobs:
         env:
           sample: ${{ env.TAG }}
         run: echo $sample
+      - uses: rmeneely/get-yaml-value@v1
+        with:
+            infile: release.yaml
+            varlist: sample
+        
 
   release:
     permissions: write-all
