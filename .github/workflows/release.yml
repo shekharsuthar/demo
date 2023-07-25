@@ -26,10 +26,9 @@ jobs:
           git config --local user.name "GitHub Actions"
           git tag ${{ env.TAG }}
           git push origin ${{ env.TAG }}
-        env:
-          sample: ${{ env.TAG }}
-      - name: Show data
-        run: echo ${{ sample }}
+          env:
+            sample: ${{ env.TAG }}
+          run: echo ${{ sample }}
           
 #   release:
 #     permissions: write-all
