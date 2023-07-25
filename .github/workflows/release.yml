@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:         
       - name: Create release
-        run: echo git describe --tags
+        run: echo ${{ git describe --tags }}
 #         env:
 #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #           tag: ${{ env.TAG }}
