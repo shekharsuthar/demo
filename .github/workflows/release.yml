@@ -18,4 +18,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           tag: "sdf"
           
-        run: gh release create "$tag"  --repo="$GITHUB_REPOSITORY" --title="${{ steps.date.outputs.date }}" --generate-notes
+        run: gh release create "$tag"   --generate-notes
