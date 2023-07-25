@@ -16,5 +16,5 @@ jobs:
       - name: Create release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          tag: "NOW=$(date +'%Y-%m-%dT%H:%M:%S')"
+          tag: ${{ github.ref_name }}
         run: gh release create "$tag" --repo="$GITHUB_REPOSITORY" --title="${GITHUB_REPOSITORY#*/} ${tag#v}"
