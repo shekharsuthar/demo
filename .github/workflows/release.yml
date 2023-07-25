@@ -7,11 +7,10 @@ on:
     branches:
       - main
 
-env:
-  sample:
-
 jobs:
   tag:
+    env:
+      sample: "sample"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
