@@ -29,15 +29,13 @@ jobs:
       output1: ${{ env.TAG }}
    
 
-
   release:
     runs-on: ubuntu-22.04
     permissions: write-all
     needs: tag
-    steps:         
+    steps:
       - name: Create release
-        run:  echo ${{needs.tag.outputs.output1}}
-# #         env:
-# #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-# #           tag: $${{ env.TAG }}
- #         run: gh release create "$tag" --repo="$GITHUB_REPOSITORY" --title="${GITHUB_REPOSITORY#*/} ${tag#v}" --generate-notes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{needs.tag.outputs.output1}}
+        run: gh release create "$tag" --repo="$GITHUB_REPOSITORY" --title="${GITHUB_REPOSITORY#*/} ${tag#v}" --generate-notes
