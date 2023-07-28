@@ -13,8 +13,6 @@ env:
 jobs:
   tag:
     runs-on: ubuntu-latest
-    outputs:
-      output1: ${{ env.TAG }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -27,10 +25,8 @@ jobs:
           git config --local user.name "GitHub Actions"
           git tag ${{ env.TAG }}
           git push origin ${{ env.TAG }}
-        
-          with:
-            name: samsdata
-            path: env.TAG
+    outputs:
+      output1: ${{ env.TAG }}
    
 
 
