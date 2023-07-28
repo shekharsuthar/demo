@@ -31,13 +31,12 @@ jobs:
 
 
   release:
+    runs-on: ubuntu-22.04
     permissions: write-all
     needs: tag
-    name: Release pushed tag
-    runs-on: ubuntu-22.04
     steps:         
       - name: Create release
-        run: echo ${{needs.tag.outputs.output1}
+        run:  echo ${{needs.tag.outputs.output1}}
 # #         env:
 # #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 # #           tag: $${{ env.TAG }}
