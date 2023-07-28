@@ -13,6 +13,8 @@ env:
 jobs:
   tag:
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ env.TAG }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -29,8 +31,7 @@ jobs:
           with:
             name: samsdata
             path: env.TAG
-    outputs:
-      output1: ${{ env.TAG }}
+   
 
 
   release:
@@ -40,7 +41,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:         
       - name: Create release
-        run: echo ${{needs.tag.outputs.output1}}
+        run: echo ${{needs.tag.outputs.output1}
 # #         env:
 # #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 # #           tag: $${{ env.TAG }}
