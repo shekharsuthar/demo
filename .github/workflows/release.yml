@@ -23,7 +23,7 @@ jobs:
           git tag ${{ env.TAG }}
           git push origin ${{ env.TAG }}
     outputs:
-      output1: ${{ env.TAG + 1 }}
+      output1: ${{ env.TAG }}
 
   release:
     runs-on: ubuntu-22.04
